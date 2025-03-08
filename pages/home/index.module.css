@@ -1,0 +1,269 @@
+/* index.module.css */
+
+/* Color Variables */
+:root {
+    --primary-yellow: #FFD700;
+    --dark-blue: #00008B;
+    --dark-green: #006400;
+    --brown: #A0522D;
+    --light-gray: #F0F0F0;
+    --dark-gray: #333;
+}
+
+/* Carousel Styles */
+.fullWidthCarousel {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.overlayContainer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.carouselCaptionCustom {
+    text-align: center;
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.captionTitle {
+    font-size: 2.5em;
+    /* Increased font size */
+    margin-bottom: 15px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+    font-weight: bold;
+}
+
+.captionText {
+    font-size: 1.3em;
+    /* Increased font size */
+    margin-bottom: 25px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+.carouselItemCustom {
+    position: relative;
+}
+
+.galleryButton {
+    background-color: var(--primary-yellow);
+    /* Primary Yellow */
+    border: 2px solid white;
+    color: var(--dark-gray);
+    padding: 10px 20px;
+    margin-top: 15px;
+    font-weight: bold;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.galleryButton:hover {
+    background-color: rgba(255, 255, 255, 0.8);
+    color: var(--primary-yellow);
+}
+
+/* Carousel Styles end */
+
+/* Welcome Section styles */
+.welcomeSection {
+    background-color: var(--light-gray);
+    /* Light Gray */
+    padding: 100px 0;
+    text-align: center;
+}
+
+.welcomeTitle {
+    font-size: 3.5em;
+    font-weight: bold;
+    margin-bottom: 30px;
+    color: var(--dark-green);
+    /* Dark Green */
+    font-family: 'Arial', sans-serif;
+}
+
+.welcomeText {
+    font-size: 1.3em;
+    line-height: 2;
+    color: #666;
+    max-width: 800px;
+    margin: 0 auto;
+    font-family: 'Georgia', serif;
+}
+
+/* Welcome Section styles ends */
+
+/* Rooms Section styles */
+.roomsSection {
+    padding: 80px 0;
+    text-align: center;
+    background-color: var(--light-green-bg);
+    /* Lighter Green Background */
+}
+
+.roomsTitle {
+    font-size: 3em;
+    font-weight: bold;
+    margin-bottom: 50px;
+    font-family: 'Arial', sans-serif;
+}
+
+.roomCard {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+    /* Increased shadow */
+    border: none;
+    /* Removed border */
+    border-radius: 12px;
+    /* Slightly more rounded corners */
+    background-color: white;
+    transition: transform 0.3s ease;
+    /* Added transition */
+}
+
+.roomCard:hover {
+    transform: translateY(-5px);
+    /* Subtle lift on hover */
+}
+
+.roomCardTitle {
+    font-size: 1.8em;
+    font-weight: bold;
+    color: var(--brown);
+    font-family: 'Arial', sans-serif;
+}
+
+.roomCardText {
+    font-size: 1.1em;
+    line-height: 1.7;
+    color: #666;
+    font-family: 'Georgia', serif;
+}
+
+.viewRoomsButton {
+    background-color: var(--primary-yellow);
+    border: none;
+    color: var(--dark-gray);
+    padding: 14px 28px;
+    font-size: 1.1em;
+    font-weight: 600;
+    border-radius: 8px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.viewRoomsButton:hover {
+    background-color: var(--dark-gray);
+    color: white;
+}
+
+
+/* Rooms Section styles ends */
+
+/* Nearby Attractions Section Styles */
+.nearbyAttractionsSection {
+    position: relative;
+    /* Required for pseudo-element positioning */
+    padding: 80px 0;
+    text-align: center;
+    color: white;
+}
+
+.nearbyAttractionsSection::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('/images/lake-1.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    /* background-color: rgba(0, 0, 0, 0.4); */
+    filter: blur(3px);
+    /* pacity: 0.8; */
+}
+
+.nearbyAttractionsSection>* {
+    position: relative;
+    /* Ensure content is above the overlay */
+    z-index: 1;
+}
+
+.nearbyAttractionsTitle {
+    font-size: 3em;
+    font-weight: bold;
+    margin-bottom: 50px;
+    color: white;
+    /* Adjust title color for readability */
+    font-family: 'Arial', sans-serif;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+    /* Add text shadow for better visibility */
+}
+
+
+.nearbyAttractionsCard {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+    /* Increased shadow */
+    border: none;
+    /* Removed border */
+    border-radius: 12px;
+    /* Slightly more rounded corners */
+    background-color: white;
+    transition: transform 0.3s ease;
+    /* Added transition */
+}
+
+.nearbyAttractionsCard:hover {
+    transform: translateY(-5px);
+    /* Subtle lift on hover */
+}
+
+.nearbyAttractionsSection .row {
+    justify-content: center;
+}
+
+.nearbyAttractionsSection .col-md-4 {
+    margin-bottom: 30px;
+}
+
+.nearbyAttractionsSection .card {
+    border: none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+    background-color: rgba(255, 255, 255, 0.8);
+    /* Add semi-transparent background to card */
+}
+
+.nearbyAttractionsSection .card-title {
+    font-size: 1.8em;
+    font-weight: bold;
+    color: var(--brown);
+    font-family: 'Arial', sans-serif;
+}
+
+.nearbyAttractionsSection .card-text {
+    font-size: 1.1em;
+    line-height: 1.7;
+    color: #666;
+    font-family: 'Georgia', serif;
+}
+
+.nearbyAttractionsSection .carousel-item img {
+    height: 250px;
+    object-fit: cover;
+    width: 100%;
+}
+
+/* Nearby Attractions Section Styles Ends */
+
+
+/* Nearby Attractions Section Styles Ends */
