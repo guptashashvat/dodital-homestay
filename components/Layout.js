@@ -68,7 +68,7 @@ export default function Layout({ children }) {
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Nav className="ms-auto">
                             <Nav.Link as={Link} href="/" active={pathname === "/"}>
-                                Home
+                                Home1
                             </Nav.Link>
                             <Nav.Link as={Link} href="/rooms" active={pathname === "/rooms"}>
                                 Rooms

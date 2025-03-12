@@ -1,15 +1,5 @@
 /* index.module.css */
 
-/* Color Variables */
-:root {
-    --primary-yellow: #FFD700;
-    --dark-blue: #00008B;
-    --dark-green: #006400;
-    --brown: #A0522D;
-    --light-gray: #F0F0F0;
-    --dark-gray: #333;
-}
-
 /* Carousel Styles */
 .fullWidthCarousel {
     width: 100%;
