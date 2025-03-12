@@ -1,5 +1,3 @@
-// Layout.js
-
 import { Container, Navbar, Nav, NavDropdown, Image } from 'react-bootstrap';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
