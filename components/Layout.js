@@ -73,7 +73,10 @@ export default function Layout({ children }) {
                             <Nav.Link as={Link} href="/rooms" active={pathname === "/rooms"}>
                                 Rooms
                             </Nav.Link>
-                            <NavDropdown title="Explore" id="explore-dropdown">
+                            <Nav.Link as={Link} href="/explore/gallery" active={pathname === "/explore/gallery"}>
+                                Gallery
+                            </Nav.Link>
+                            {/* <NavDropdown title="Explore" id="explore-dropdown">
                                 <NavDropdown.Item
                                     as={Link}
                                     href="/explore/gallery"
@@ -88,7 +91,7 @@ export default function Layout({ children }) {
                                 >
                                     Activities
                                 </NavDropdown.Item>
-                            </NavDropdown>
+                            </NavDropdown> */}
                             <Nav.Link as={Link} href="/contact" active={pathname === "/contact"}>
                                 Contact
                             </Nav.Link>

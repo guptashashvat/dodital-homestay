@@ -1,8 +1,22 @@
 import Layout from '@/components/Layout';
 import { Container, Row, Col } from 'react-bootstrap';
 import styles from './contact.module.css';
+import { client } from '@/lib/sanity';
+import { useEffect, useState } from 'react';
 
 const ContactPage = () => {
+    const [contactInfo, setContactInfo] = useState(null);
+
+    useEffect(() => {
+        const fetchContactInfo = async () => {
+            const query = `*[_type == "contact"][0]`;
+            const data = await client.fetch(query);
+            setContactInfo(data);
+        };
+
+        fetchContactInfo();
+    }, []);
+
     return (
         <Layout>
             <Container className="my-5">
@@ -15,10 +29,10 @@ const ContactPage = () => {
 
                         <div className={styles.contactInfo}>
                             <h3 className="text-center mb-3">Contact Information</h3>
-                            <p><strong>Phone 1:</strong> +1 (123) 456-7890</p>
-                            <p><strong>Phone 2:</strong> +1 (987) 654-3210</p>
-                            <p><strong>Email:</strong> info@yourhomestay.com</p>
-                            <p><strong>Address:</strong> 123 Homestay Street, City, Country</p>
+                            <p><strong>{contactInfo?.phone2 ? 'Phone 1' : 'Phone'}:</strong> {contactInfo?.phone1}</p>
+                            {contactInfo?.phone2 && <p><strong>Phone 2:</strong> {contactInfo?.phone2}</p>}
+                            <p><strong>Email:</strong> {contactInfo?.email}</p>
+                            <p><strong>Address:</strong> {contactInfo?.address}</p>
                         </div>
                     </Col>
                 </Row>
