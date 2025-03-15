@@ -2,34 +2,26 @@
 
 .footer {
     background-color: #222;
-    /* Dark Background (Same as Navbar) */
     color: #fff;
     padding: 30px 0;
-    /* Increased Padding */
     text-align: center;
+    width: 100%;
 }
 
 .socialLinks {
     display: flex;
     justify-content: center;
     gap: 30px;
-    /* Increased Gap */
     margin-top: 20px;
-    /* Added Margin */
 }
 
 .socialIcon {
     font-size: 30px;
-    /* Increased Icon Size */
     color: #FFD700;
-    /* Use Primary Yellow from Logo */
     transition: transform 0.3s ease;
-    /* Use Transform Transition */
 }
 
 .socialIcon:hover {
     transform: scale(1.2);
-    /* Scale Icon on Hover */
     color: #ADD8E6;
-    /* Use Light Blue on Hover */
 }
