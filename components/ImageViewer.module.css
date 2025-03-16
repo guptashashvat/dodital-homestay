@@ -1,0 +1,50 @@
+/* components/ImageViewer.module.css */
+
+.imageViewer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.closeButton {
+    position: absolute;
+    top: 90px;
+    right: 20px;
+    color: white;
+    font-size: 1.5em;
+    cursor: pointer;
+    z-index: 1001;
+    /* Higher z-index */
+}
+
+.navigation {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+    transform: translateY(-50%);
+}
+
+.navButton {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 2em;
+    cursor: pointer;
+    padding: 10px;
+}
+
+.imageContainer {
+    max-width: 90%;
+    max-height: 90%;
+}
