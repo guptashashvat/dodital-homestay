@@ -1,6 +1,6 @@
 # Dodital Homestay
 
-Welcome to the Dodital Homestay project! This project is a web application designed to showcase a homestay located in the beautiful region of Dodital. The application provides information about the homestay, rooms, nearby attractions, and includes a Google Maps integration to show the location of the homestay.
+Welcome to the Dodital Homestay project! This project is a web application designed to showcase a homestay located in the beautiful region of Dodital. The application provides information about the homestay, rooms, nearby attractions, and includes a Google Maps integration to show the location of the homestay. Although this project was created for Dodital Homestay, it can be used for any homestay portfolio website. All you need to do is set up Sanity, and update the data in Sanity Studio/CMS.
 
 ## Table of Contents
 
@@ -128,7 +128,3 @@ Contributions are welcome! If you have any suggestions or improvements, please c
     git push origin feature/your-feature-name
     ```
 5. **Open a pull request**.
-
-## License
-
-This project is licensed under the MIT License. See the LICENSE file for more information.
