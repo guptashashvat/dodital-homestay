@@ -1,20 +1,19 @@
 /* styles/globals.css */
 
-/* Base Styles */
+* {
+  font-family: 'Helvetica Neue';
+}
+
 body {
-  font-family: sans-serif;
-  /* You can change this */
   background-color: #F0F0F0;
-  /* Light Gray Background */
   color: #333;
-  /* Dark Gray Text */
   margin: 0;
   padding: 0;
 }
 
 /* Color Variables */
 :root {
-  --primary-yellow: #FFD700;
+  --primary-yellow: #fec900;
   --light-blue: #ADD8E6;
   --dark-blue: #00008B;
   --light-green: #90EE90;
@@ -24,10 +23,33 @@ body {
   --dark-gray: #333;
 }
 
-/* Navbar Styles (Example) */
+.sticky-navbar {
+  transition: background-color 0.4s ease, color 0.4s ease;
+  z-index: 1000;
+}
+
+.sticky-navbar.scrolled {
+  background-color: #222;
+  /* Dark background when scrolled */
+}
+
+.sticky-navbar.bg-transparent {
+  background-color: transparent !important;
+  color: white;
+}
+
+.sticky-navbar.bg-transparent .navbar-brand-custom,
+.sticky-navbar.bg-transparent .nav-link {
+  color: white !important;
+}
+
+.navbar-dark .navbar-nav .nav-link.active {
+  color: var(--primary-yellow) !important;
+  /* Yellow for active links */
+}
+
 .sticky-navbar {
   background-color: #222;
-  /* Dark Background */
   color: #fff;
   z-index: 1000;
   padding: 10px 0;
@@ -41,7 +63,6 @@ body {
   font-weight: bold;
   font-size: 1.2rem;
   font-family: 'Pacifico', cursive;
-  /* Your Funky Font */
 }
 
 .navbar-brand-custom img {
@@ -54,11 +75,11 @@ body {
 }
 
 .navbar-dark .navbar-nav .nav-link {
-  color: rgba(255, 255, 255, 0.75);
+  color: white;
   font-size: 1.1rem;
   padding: 10px 15px;
   transition: color 0.3s ease;
-  font-weight: 600;
+  font-weight: 400;
   margin-left: 10px;
 }
 
@@ -72,7 +93,7 @@ body {
   /* Yellow for active links */
 }
 
-/* Button Styles (Example) */
+/* Button Styles */
 .btn-primary {
   background-color: var(--primary-yellow);
   color: var(--dark-gray);
@@ -86,7 +107,7 @@ body {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
-/* Headings (Example) */
+/* Headings */
 h1,
 h2,
 h3 {

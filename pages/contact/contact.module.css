@@ -1,8 +1,61 @@
-/* contact.module.css */
+/* pages/contact.module.css */
 
-.contactInfo {
-    background-color: #f8f8f8;
-    padding: 20px;
-    border-radius: 5px;
+.contactHeader {
+    background-color: #f8f9fa;
+    /* Light background */
+    padding: 30px 20px;
+    border-radius: 8px;
+    margin-bottom: 30px;
+}
+
+.contactDetails {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+}
+
+.contactDetails h3 {
+    color: #333;
+    font-weight: 600;
+}
+
+.contactDetails p {
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 10px;
+}
+
+.mapSection {
+    background-color: var(--light-gray);
+    padding: 30px 20px;
+    border-radius: 8px;
+}
+
+.mapSection h2 {
+    color: #333;
+    font-weight: 600;
+}
+
+.mapSection p {
+    color: #555;
+    line-height: 1.6;
     margin-bottom: 20px;
+}
+
+.mapContainer {
+    margin-top: 20px;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+
+    .contactDetails,
+    .mapSection {
+        padding: 20px;
+    }
 }

@@ -1,7 +1,7 @@
 import { Container, Row, Col, Card, Carousel } from 'react-bootstrap';
 import { client, urlFor } from '@/lib/sanity';
 import { useEffect, useState } from 'react';
-import styles from './index.module.css'; // Import the CSS module
+import styles from './index.module.css';
 
 const NearbyAttractions = () => {
     const [attractions, setAttractions] = useState([]);
@@ -26,13 +26,13 @@ const NearbyAttractions = () => {
     }, []);
 
     return (
-        <div className={styles.nearbyAttractionsSection}> {/* Apply section style */}
-            <h2 className={styles.nearbyAttractionsTitle}>Nearby Attractions</h2> {/* Apply title style */}
-            <Container className="my-5"> {/* Keep Bootstrap Container */}
-                <Row className="justify-content-center"> {/* Keep Bootstrap Row */}
+        <div className={styles.nearbyAttractionsSection}>
+            <h2 className={styles.nearbyAttractionsTitle}>Nearby Attractions</h2>
+            <Container className="my-5">
+                <Row className="justify-content-center">
                     {attractions.map((attraction) => (
-                        <Col key={attraction.title} md={4}> {/* Keep Bootstrap Col */}
-                            <Card className={styles.nearbyAttractionsCard}>
+                        <Col key={attraction.title} md={4}>
+                            <Card border="light" className={styles.nearbyAttractionsCard}>
                                 <Carousel>
                                     {attraction.images?.map((image, index) => (
                                         <Carousel.Item key={index}>
@@ -46,8 +46,8 @@ const NearbyAttractions = () => {
                                     ))}
                                 </Carousel>
                                 <Card.Body>
-                                    <Card.Title>{attraction.title}</Card.Title> {/* Keep Bootstrap Card Title */}
-                                    <Card.Text>{attraction.description}</Card.Text> {/* Keep Bootstrap Card Text */}
+                                    <Card.Title>{attraction.title}</Card.Title>
+                                    <Card.Text>{attraction.description}</Card.Text>
                                 </Card.Body>
                             </Card>
                         </Col>
