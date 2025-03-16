@@ -1,40 +1,134 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/pages/api-reference/create-next-app).
+# Dodital Homestay
 
-## Getting Started
+Welcome to the Dodital Homestay project! This project is a web application designed to showcase a homestay located in the beautiful region of Dodital. The application provides information about the homestay, rooms, nearby attractions, and includes a Google Maps integration to show the location of the homestay.
 
-First, run the development server:
+## Table of Contents
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- [Project Purpose](#project-purpose)
+- [Features](#features)
+- [Technologies Used](#technologies-used)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Sanity Integration](#sanity-integration)
+- [Contributing](#contributing)
+- [License](#license)
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Project Purpose
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+The Dodital Homestay project aims to provide a comprehensive and visually appealing platform for potential guests to explore and learn about the homestay. It highlights the unique features of the homestay, the available rooms, and nearby attractions, making it easier for guests to make informed decisions about their stay.
 
-[API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+## Features
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) instead of React pages.
+- **Homepage**: A beautifully designed homepage with multiple sections including a carousel, welcome section, rooms section, nearby attractions, and a Google Maps integration.
+- **Carousel**: A full-width carousel showcasing images of the homestay.
+- **Welcome Section**: A section welcoming visitors and providing a brief introduction to the homestay.
+- **Rooms Section**: Information about the different rooms available at the homestay.
+- **Nearby Attractions**: Details about nearby attractions that guests can visit.
+- **Google Maps Integration**: A map showing the exact location of the homestay.
+- **Sanity Integration**: Content management using Sanity.io for dynamic content updates.
 
-This project uses [`next/font`](https://nextjs.org/docs/pages/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Technologies Used
 
-## Learn More
+- **React**: A JavaScript library for building user interfaces.
+- **Next.js**: A React framework for server-side rendering and generating static websites.
+- **CSS Modules**: A CSS file in which all class and animation names are scoped locally by default.
+- **Google Maps API**: An API to integrate Google Maps into the application.
+- **Sanity.io**: A headless CMS for managing and delivering content.
 
-To learn more about Next.js, take a look at the following resources:
+## Installation
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn-pages-router) - an interactive Next.js tutorial.
+To get started with the project, follow these steps:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+1. **Clone the repository**:
+    ```bash
+    git clone https://github.com/your-username/dodital-homestay.git
+    cd dodital-homestay
+    ```
 
-## Deploy on Vercel
+2. **Install dependencies**:
+    ```bash
+    npm install
+    ```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+3. **Create a `.env.local` file**:
+    Create a `.env.local` file in the root directory and add your Google Maps API key and Sanity project details:
+    ```env
+    NEXT_PUBLIC_GOOGLE_MAPS_API_KEY=your_google_maps_api_key
+    NEXT_PUBLIC_SANITY_PROJECT_ID=your_sanity_project_id
+    NEXT_PUBLIC_SANITY_DATASET=your_sanity_dataset
+    ```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/pages/building-your-application/deploying) for more details.
+4. **Run the development server**:
+    ```bash
+    npm run dev
+    ```
+
+    Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
+## Usage
+
+- **Homepage**: Navigate to the homepage to see the different sections and information about the homestay.
+- **Google Maps**: View the location of the homestay on the integrated Google Map.
+- **Sanity CMS**: Use Sanity.io to manage and update the content dynamically.
+
+## Sanity Integration
+
+The project is integrated with Sanity.io, a headless CMS that allows for easy content management and updates. Here's how the integration works:
+
+1. **Sanity Studio**: The Sanity Studio is set up to manage the content for the homestay, including images, room details, and nearby attractions. The Sanity project for this application is available in the repository [dodital-homestay-cms](https://github.com/your-username/dodital-homestay-cms).
+2. **Sanity Client**: The Next.js application uses the Sanity client to fetch and display content from the Sanity dataset.
+3. **Dynamic Content**: Content updates made in the Sanity Studio are reflected in the application in real-time, ensuring that the information is always up-to-date.
+
+To set up Sanity for this project, follow these steps:
+
+1. **Clone the Sanity CMS repository**:
+    ```bash
+    git clone https://github.com/your-username/dodital-homestay-cms.git
+    cd dodital-homestay-cms
+    ```
+
+2. **Install Sanity CLI**:
+    ```bash
+    npm install -g @sanity/cli
+    ```
+
+3. **Install dependencies**:
+    ```bash
+    npm install
+    ```
+
+4. **Initialize Sanity Studio**:
+    ```bash
+    sanity init
+    ```
+
+5. **Deploy Sanity Studio**:
+    ```bash
+    sanity deploy
+    ```
+
+6. **Configure Sanity Client**:
+    Update the Sanity client configuration in your Next.js application to use your project ID and dataset.
+
+## Contributing
+
+Contributions are welcome! If you have any suggestions or improvements, please create an issue or submit a pull request.
+
+1. **Fork the repository**.
+2. **Create a new branch**:
+    ```bash
+    git checkout -b feature/your-feature-name
+    ```
+3. **Commit your changes**:
+    ```bash
+    git commit -m 'Add some feature'
+    ```
+4. **Push to the branch**:
+    ```bash
+    git push origin feature/your-feature-name
+    ```
+5. **Open a pull request**.
+
+## License
+
+This project is licensed under the MIT License. See the LICENSE file for more information.
