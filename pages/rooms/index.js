@@ -11,7 +11,7 @@ import ImageViewer from '@/components/ImageViewer';
 const RoomsPage = () => {
     const [rooms, setRooms] = useState([]);
     const [showViewer, setShowViewer] = useState(false);
-    const [selectedImageIndex, setSelectedImageIndex] = useState(0); // Use index instead of image
+    const [selectedImageIndex, setSelectedImageIndex] = useState(0);
     const [selectedRoomImages, setSelectedRoomImages] = useState([]);
 
     useEffect(() => {
@@ -64,7 +64,7 @@ const RoomsPage = () => {
                                                 src={urlFor(image).url()}
                                                 alt={image.asset?.alt || `${room.title} - Image ${index + 1}`}
                                                 style={{ height: '300px', objectFit: 'cover' }}
-                                                onClick={() => handleImageClick(room.images, index)} // Pass index
+                                                onClick={() => handleImageClick(room.images, index)}
                                             />
                                         </Carousel.Item>
                                     ))}

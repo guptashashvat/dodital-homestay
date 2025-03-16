@@ -34,11 +34,9 @@ const Footer = () => {
 
                         <div className={styles.socialLinks}>
                             {pathname !== '/contact' && (
-                                // <div className={styles.contactInfo}>
                                 <a href="/contact" className={styles.mapLink}>
                                     <FaMapMarkerAlt className={styles.mapIcon} /> View Location
                                 </a>
-                                // </div>
                             )}
                             <a href={footerData?.instagramLink} target="_blank" rel="noopener noreferrer" className={styles.socialIcon} aria-label="Instagram">
                                 <FaInstagram />

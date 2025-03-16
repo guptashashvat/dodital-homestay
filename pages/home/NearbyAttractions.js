@@ -1,10 +1,14 @@
 import { Container, Row, Col, Card, Carousel } from 'react-bootstrap';
 import { client, urlFor } from '@/lib/sanity';
 import { useEffect, useState } from 'react';
+import ImageViewer from '@/components/ImageViewer';
 import styles from './index.module.css';
 
 const NearbyAttractions = () => {
     const [attractions, setAttractions] = useState([]);
+    const [showViewer, setShowViewer] = useState(false);
+    const [selectedImageIndex, setSelectedImageIndex] = useState(0);
+    const [selectedImages, setSelectedImages] = useState([]);
 
     useEffect(() => {
         const fetchAttractions = async () => {
@@ -25,6 +29,23 @@ const NearbyAttractions = () => {
         fetchAttractions();
     }, []);
 
+    const handleImageClick = (images, index) => {
+
+        const transformedImages = images.map((item, index) => ({
+            image: {
+                asset: item.asset,
+            }
+        }));
+
+        setSelectedImages(transformedImages);
+        setSelectedImageIndex(index);
+        setShowViewer(true);
+    };
+
+    const handleCloseViewer = () => {
+        setShowViewer(false);
+    };
+
     return (
         <div className={styles.nearbyAttractionsSection}>
             <h2 className={styles.nearbyAttractionsTitle}>Nearby Attractions</h2>
@@ -41,6 +62,7 @@ const NearbyAttractions = () => {
                                                 src={urlFor(image).url()}
                                                 alt={image.asset.alt || `Slide ${index + 1}`}
                                                 style={{ height: '250px', objectFit: 'cover' }}
+                                                onClick={() => handleImageClick(attraction.images, index)}
                                             />
                                         </Carousel.Item>
                                     ))}
@@ -53,6 +75,13 @@ const NearbyAttractions = () => {
                         </Col>
                     ))}
                 </Row>
+                {showViewer && (
+                    <ImageViewer
+                        images={selectedImages}
+                        initialIndex={selectedImageIndex} // Pass index
+                        onClose={handleCloseViewer}
+                    />
+                )}
             </Container>
         </div>
     );
