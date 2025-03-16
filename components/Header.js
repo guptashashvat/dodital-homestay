@@ -9,6 +9,7 @@ import { useEffect, useState } from 'react';
 export default function Header() {
     const pathname = usePathname();
     const [navbarData, setNavbarData] = useState(null);
+    const [isScrolled, setIsScrolled] = useState(false);
 
     useEffect(() => {
         const fetchNavbarData = async () => {
@@ -23,8 +24,26 @@ export default function Header() {
         fetchNavbarData();
     },);
 
+    useEffect(() => {
+        if (pathname === '/') {
+            const handleScroll = () => {
+                if (window.scrollY > 100) { // Adjust scroll threshold as needed
+                    setIsScrolled(true);
+                } else {
+                    setIsScrolled(false);
+                }
+            };
+
+            window.addEventListener('scroll', handleScroll);
+            return () => window.removeEventListener('scroll', handleScroll);
+        }
+    }, []);
+
+    const isHomePage = pathname === '/';
+
     return (
-        <Navbar bg="dark" variant="dark" expand="lg" className="sticky-navbar fixed-top">
+        <Navbar expand="lg" bg={isHomePage ? (isScrolled ? 'dark' : 'transparent') : 'dark'}
+            variant='dark' className={`sticky-navbar fixed-top ${isHomePage && isScrolled ? 'scrolled' : ''}`}>
             <Container>
                 <Navbar.Brand as={Link} className="navbar-brand-custom" href="/">
                     {navbarData?.logo ? (

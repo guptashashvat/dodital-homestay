@@ -25,3 +25,20 @@
     transform: scale(1.2);
     color: #ADD8E6;
 }
+
+.mapLink {
+    color: #FFD700;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mapLink:hover {
+    transform: scale(0.9);
+    color: #ADD8E6;
+}
+
+.mapIcon {
+    margin-right: 5px;
+}

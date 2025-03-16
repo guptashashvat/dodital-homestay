@@ -2,10 +2,12 @@
 
 import Header from './Header';
 import Footer from './Footer';
+import { usePathname } from 'next/navigation';
 import styles from './Layout.module.css'; // Import the styles
 import { useEffect, useState } from 'react';
 
 export default function Layout({ children }) {
+    const pathname = usePathname();
     const [navbarHeight, setNavbarHeight] = useState(0);
 
     useEffect(() => {
@@ -33,9 +35,9 @@ export default function Layout({ children }) {
     }, []);
 
     return (
-        <div className={styles.layoutContainer}> {/* Add layoutContainer class */}
+        <div className={styles.layoutContainer}>
             <Header />
-            <div style={{ paddingTop: `${navbarHeight}px` }} className={styles.mainContent}> {/* Add mainContent class */}
+            <div style={pathname === '/' ? {} : { paddingTop: `${navbarHeight}px` }} className={styles.mainContent}>
                 {children}
             </div>
             <Footer />

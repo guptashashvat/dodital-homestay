@@ -1,16 +1,23 @@
+// pages/rooms.js
+
 import Layout from '@/components/Layout';
 import { Container, Row, Col, Card, Button, Carousel } from 'react-bootstrap';
 import styles from './rooms.module.css';
 import Link from 'next/link';
-import { client, urlFor } from '@/lib/sanity'; // Import Sanity client and urlFor
+import { client, urlFor } from '@/lib/sanity';
 import { useEffect, useState } from 'react';
+import ImageViewer from '@/components/ImageViewer';
 
 const RoomsPage = () => {
     const [rooms, setRooms] = useState([]);
+    const [showViewer, setShowViewer] = useState(false);
+    const [selectedImageIndex, setSelectedImageIndex] = useState(0);
+    const [selectedRoomImages, setSelectedRoomImages] = useState([]);
 
     useEffect(() => {
         const fetchRooms = async () => {
             const query = `*[_type == "room"] {
+                _id,
                 title,
                 description,
                 images[] { asset->{ url, alt } },
@@ -23,6 +30,23 @@ const RoomsPage = () => {
 
         fetchRooms();
     }, []);
+
+    const handleImageClick = (roomImages, index) => {
+
+        const transformedImages = roomImages.map((item, index) => ({
+            image: {
+                asset: item.asset,
+            }
+        }));
+
+        setSelectedRoomImages(transformedImages);
+        setSelectedImageIndex(index);
+        setShowViewer(true);
+    };
+
+    const handleCloseViewer = () => {
+        setShowViewer(false);
+    };
 
     return (
         <Layout>
@@ -40,6 +64,7 @@ const RoomsPage = () => {
                                                 src={urlFor(image).url()}
                                                 alt={image.asset?.alt || `${room.title} - Image ${index + 1}`}
                                                 style={{ height: '300px', objectFit: 'cover' }}
+                                                onClick={() => handleImageClick(room.images, index)}
                                             />
                                         </Carousel.Item>
                                     ))}
@@ -61,6 +86,13 @@ const RoomsPage = () => {
                         </Col>
                     ))}
                 </Row>
+                {showViewer && (
+                    <ImageViewer
+                        images={selectedRoomImages}
+                        initialIndex={selectedImageIndex} // Pass index
+                        onClose={handleCloseViewer}
+                    />
+                )}
             </Container>
         </Layout>
     );

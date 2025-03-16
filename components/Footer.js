@@ -2,12 +2,15 @@
 
 import styles from './Footer.module.css';
 import { Container, Row, Col } from 'react-bootstrap';
-import { FaInstagram, FaFacebook, FaWhatsapp } from 'react-icons/fa';
+import { FaInstagram, FaFacebook, FaWhatsapp, FaMapMarkerAlt } from 'react-icons/fa';
 import { client } from '@/lib/sanity';
 import { useEffect, useState } from 'react';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
 const Footer = () => {
     const [footerData, setFooterData] = useState(null);
+    const pathname = usePathname();
 
     useEffect(() => {
         const fetchFooterData = async () => {
@@ -27,7 +30,14 @@ const Footer = () => {
                         <p>{footerData?.copyright || `© ${new Date().getFullYear()} Dodital Homestay. All rights reserved.`}</p>
                     </Col>
                     <Col md={6} className="text-center text-md-end">
+
+
                         <div className={styles.socialLinks}>
+                            {pathname !== '/contact' && (
+                                <a href="/contact" className={styles.mapLink}>
+                                    <FaMapMarkerAlt className={styles.mapIcon} /> View Location
+                                </a>
+                            )}
                             <a href={footerData?.instagramLink} target="_blank" rel="noopener noreferrer" className={styles.socialIcon} aria-label="Instagram">
                                 <FaInstagram />
                             </a>

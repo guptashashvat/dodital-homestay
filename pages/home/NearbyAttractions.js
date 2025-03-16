@@ -1,10 +1,14 @@
 import { Container, Row, Col, Card, Carousel } from 'react-bootstrap';
 import { client, urlFor } from '@/lib/sanity';
 import { useEffect, useState } from 'react';
-import styles from './index.module.css'; // Import the CSS module
+import ImageViewer from '@/components/ImageViewer';
+import styles from './index.module.css';
 
 const NearbyAttractions = () => {
     const [attractions, setAttractions] = useState([]);
+    const [showViewer, setShowViewer] = useState(false);
+    const [selectedImageIndex, setSelectedImageIndex] = useState(0);
+    const [selectedImages, setSelectedImages] = useState([]);
 
     useEffect(() => {
         const fetchAttractions = async () => {
@@ -25,14 +29,31 @@ const NearbyAttractions = () => {
         fetchAttractions();
     }, []);
 
+    const handleImageClick = (images, index) => {
+
+        const transformedImages = images.map((item, index) => ({
+            image: {
+                asset: item.asset,
+            }
+        }));
+
+        setSelectedImages(transformedImages);
+        setSelectedImageIndex(index);
+        setShowViewer(true);
+    };
+
+    const handleCloseViewer = () => {
+        setShowViewer(false);
+    };
+
     return (
-        <div className={styles.nearbyAttractionsSection}> {/* Apply section style */}
-            <h2 className={styles.nearbyAttractionsTitle}>Nearby Attractions</h2> {/* Apply title style */}
-            <Container className="my-5"> {/* Keep Bootstrap Container */}
-                <Row className="justify-content-center"> {/* Keep Bootstrap Row */}
+        <div className={styles.nearbyAttractionsSection}>
+            <h2 className={styles.nearbyAttractionsTitle}>Nearby Attractions</h2>
+            <Container className="my-5">
+                <Row className="justify-content-center">
                     {attractions.map((attraction) => (
-                        <Col key={attraction.title} md={4}> {/* Keep Bootstrap Col */}
-                            <Card className={styles.nearbyAttractionsCard}>
+                        <Col key={attraction.title} md={4}>
+                            <Card border="light" className={styles.nearbyAttractionsCard}>
                                 <Carousel>
                                     {attraction.images?.map((image, index) => (
                                         <Carousel.Item key={index}>
@@ -41,18 +62,26 @@ const NearbyAttractions = () => {
                                                 src={urlFor(image).url()}
                                                 alt={image.asset.alt || `Slide ${index + 1}`}
                                                 style={{ height: '250px', objectFit: 'cover' }}
+                                                onClick={() => handleImageClick(attraction.images, index)}
                                             />
                                         </Carousel.Item>
                                     ))}
                                 </Carousel>
                                 <Card.Body>
-                                    <Card.Title>{attraction.title}</Card.Title> {/* Keep Bootstrap Card Title */}
-                                    <Card.Text>{attraction.description}</Card.Text> {/* Keep Bootstrap Card Text */}
+                                    <Card.Title>{attraction.title}</Card.Title>
+                                    <Card.Text>{attraction.description}</Card.Text>
                                 </Card.Body>
                             </Card>
                         </Col>
                     ))}
                 </Row>
+                {showViewer && (
+                    <ImageViewer
+                        images={selectedImages}
+                        initialIndex={selectedImageIndex} // Pass index
+                        onClose={handleCloseViewer}
+                    />
+                )}
             </Container>
         </div>
     );
