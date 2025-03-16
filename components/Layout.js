@@ -9,6 +9,7 @@ import { useEffect, useState } from 'react';
 export default function Layout({ children }) {
     const pathname = usePathname();
     const [navbarHeight, setNavbarHeight] = useState(0);
+    const [isLargeScreen, setIsLargeScreen] = useState(true);
 
     useEffect(() => {
         const updateNavbarHeight = () => {
@@ -34,10 +35,21 @@ export default function Layout({ children }) {
         };
     }, []);
 
+    useEffect(() => {
+        const handleResize = () => {
+            setIsLargeScreen(window.innerWidth >= 768);
+        };
+
+        handleResize(); // Initial check
+        window.addEventListener('resize', handleResize);
+
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
+
     return (
         <div className={styles.layoutContainer}>
             <Header />
-            <div style={pathname === '/' ? {} : { paddingTop: `${navbarHeight}px` }} className={styles.mainContent}>
+            <div style={pathname === '/' && isLargeScreen ? {} : { paddingTop: `${navbarHeight}px` }} className={styles.mainContent}>
                 {children}
             </div>
             <Footer />

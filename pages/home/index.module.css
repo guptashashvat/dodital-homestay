@@ -40,6 +40,26 @@
     font-weight: 400;
 }
 
+@media (width <=768px) {
+    .captionTitle {
+        font-size: 2.25rem;
+    }
+
+    .captionText {
+        font-size: 1rem;
+    }
+}
+
+@media (width <=499px) {
+    .captionTitle {
+        font-size: 1.5rem;
+    }
+
+    .captionText {
+        font-size: 0.8rem;
+    }
+}
+
 .carouselItemCustom {
     position: relative;
 }

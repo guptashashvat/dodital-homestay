@@ -10,6 +10,7 @@ export default function Header() {
     const pathname = usePathname();
     const [navbarData, setNavbarData] = useState(null);
     const [isScrolled, setIsScrolled] = useState(false);
+    const [isLargeScreen, setIsLargeScreen] = useState(true);
 
     useEffect(() => {
         const fetchNavbarData = async () => {
@@ -39,11 +40,22 @@ export default function Header() {
         }
     }, []);
 
+    useEffect(() => {
+        const handleResize = () => {
+            setIsLargeScreen(window.innerWidth >= 768);
+        };
+
+        handleResize(); // Initial check
+        window.addEventListener('resize', handleResize);
+
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
+
     const isHomePage = pathname === '/';
 
     return (
-        <Navbar expand="lg" bg={isHomePage ? (isScrolled ? 'dark' : 'transparent') : 'dark'}
-            variant='dark' className={`sticky-navbar fixed-top ${isHomePage && isScrolled ? 'scrolled' : ''}`}>
+        <Navbar expand="lg" bg={isHomePage && isLargeScreen ? (isScrolled ? 'dark' : 'transparent') : 'dark'}
+            variant='dark' className={`sticky-navbar fixed-top ${isHomePage && isLargeScreen && isScrolled ? 'scrolled' : ''}`}>
             <Container>
                 <Navbar.Brand as={Link} className="navbar-brand-custom" href="/">
                     {navbarData?.logo ? (
